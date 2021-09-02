@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        gap: 10px;
+        font-family: "Teko", sans-serif;
+        --green: #30875d;
+        --red: #f24429;
+        --yellow: #f1c466;
+        --beige: #f1e3c6;
+        --orange: #df8d2a;
+        --black: #2c2b2b;
+        --blue: rgb(82, 150, 228);
+      }
+      .madret_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 10px;
+        max-width: 960px;
+        margin: 2rem auto;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      header img {
+        width: 3em;
+        padding: 1em;
+      }
+
+      body {
+        background-color: var(--yellow);
+      }
+
+      nav {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1.5rem;
+      }
+
+      button {
+        background-color: var(--beige);
+        border: solid 2px var(--green);
+        color: black;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+      }
+
+      .valgt {
+        background-color: var(--blue);
+        border: solid 1px var(--black);
+        color: white;
+        box-shadow: -2px 3px 15px -2px rgba(0, 0, 0, 0.3);
+      }
+
+      button:hover {
+        background-color: var(--blue);
+        border: solid 1px var(--black);
+        color: white;
+        box-shadow: -2px 3px 15px -2px rgba(0, 0, 0, 0.47);
+      }
+
+      header {
+        background-color: var(--orange);
+        position: sticky;
+        top: o;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .babushkaline {
+        background-color: var(--blue);
+        background-image: url(logo.png);
+        background-size: contain;
+        height: 2rem;
+      }
+
+      #first {
+        background-color: var(--green);
+        height: auto;
+        box-shadow: -2px 3px 15px -2px rgba(0, 0, 0, 0.47);
+        font-size: 3rem;
+        color: var(--yellow);
+        text-align: center;
+        padding: 20px;
+      }
+
+      #first h2 {
+        font-size: 2rem;
+        color: var(--black);
+      }
+
+      .personer {
+        box-shadow: 0px 2px 8px 5px rgba(0, 0, 0, 0.43);
+        background-color: var(--beige);
+        color: var(--black);
+        text-align: center;
+      }
+
+      .personer:hover {
+        background-color: var(--orange);
+        color: var(--black);
+      }
+
+      #popup {
+        background-color: var(--blue);
+        background-image: url(baggrund.jpg);
+        background-size: contain;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        display: none;
+        text-align: center;
+        padding-top: 40px;
+      }
+
+      #popup article {
+        background-color: var(--beige);
+        position: relative;
+        width: 40%;
+        padding: 20px;
+        margin-inline: auto;
+        border-radius: 10px;
+        box-shadow: -2px 3px 15px -2px rgba(0, 0, 0, 0.8);
+      }
+
+      #popup p {
+        max-width: 40ch;
+        margin: auto;
+        font-family: serif;
+        text-align: center;
+        color: var(--black);
+      }
+
+      #popup h2 {
+        font-size: 4rem;
+        color: var(--black);
+      }
+
+      #popupknap {
+        position: absolute;
+        top: -34px;
+        left: -17px;
+        width: 35px;
+        height: 35px;
+      }
+
+      footer {
+        background-color: var(--green);
+        text-align: center;
+        padding: 1rem;
+      }
+
+      footer h4,
+      footer p {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+
+  <header>
+    <img src="logo.png" alt="Babushka logo" />
+    <nav>
+      <button data-kategori="alle" class="valgt">Alle</button>
+      <button data-kategori="forretter">Forretter</button>
+      <button data-kategori="hovedretter">Hovedretter</button>
+      <button data-kategori="sideorders">Side Orders</button>
+      <button data-kategori="desserter">Desserter</button>
+      <button data-kategori="drikkevarer">Drikkevarer</button>
+    </nav>
+  </header>
+
+  <body>
+    <section class="babushkaline"></section>
+    <section id="first">
+      <h1>BISTRO BABUSHKA</h1>
+      <h2>Alle</h2>
+    </section>
+
+    <section class="babushkaline"></section>
+
+    <section class="madret_container"></section>
+
+    <template>
+      <article class="personer">
+        <img src="" alt="" />
+        <h2></h2>
+        <p class="navn"></p>
+        <p class="info"></p>
+        <p class="pris"></p>
+      </article>
+    </template>
+
+    <section id="popup">
+      <article>
+        <button id="popupknap">X</button>
+        <img src="" alt="" class="pic" />
+        <h2 class="navn"></h2>
+        <p class="langbeskrivelse"></p>
+        <p class="region"></p>
+      </article>
+    </section>
+  </body>
+  <section class="babushkaline"></section>
+  <footer>
+    <section>
+      <h4>Bistro Babushka</h4>
+      <br />
+      <p>Tlf: +45 39 67 20 65</p>
+      <p>Adresse: Russian Road 89, Slakowski, Russia</p>
+    </section>
+  </footer>
+
+  <script>
+    const header = document.querySelector("header h2");
+    const url = "https://babushka-dd8a.restdb.io/rest/menu";
+    const options = {
+      headers: {
+        "x-apikey": "600ec2fb1346a1524ff12de4",
+      },
+    };
+
+    window.addEventListener("DOMContentLoaded", start);
+    let personer;
+    let filter = "alle";
+    console.log("siden er loaded");
+
+    function start() {
+      const filterKnapper = document.querySelectorAll("nav button");
+      filterKnapper.forEach((knap) =>
+        knap.addEventListener("click", filtrerPersoner)
+      );
+      hentData();
+    }
+
+    async function hentData() {
+      const resultat = await fetch(url, options);
+      personer = await resultat.json();
+      console.log("Personer", personer);
+      visPersoner();
+    }
+
+    function filtrerPersoner() {
+      const header = document.querySelector("#first h2");
+      filter = this.dataset.kategori;
+      document.querySelector(".valgt").classList.remove("valgt");
+      this.classList.add("valgt");
+      visPersoner();
+      header.textContent = this.textContent;
+    }
+
+    function visPersoner() {
+      const beholder = document.querySelector(".madret_container");
+      const skabelon = document.querySelector("template");
+      beholder.textContent = "";
+
+      personer.forEach((person) => {
+        console.log("kategori", person.kategori);
+
+        if (filter == person.kategori || filter == "alle") {
+          const klon = skabelon.cloneNode(true).content;
+          klon.querySelector("h2").textContent = person.navn;
+          klon.querySelector("img").src =
+            "medium/" + person.billednavn + "-md.jpg";
+          klon.querySelector(".info").textContent = person.kortbeskrivelse;
+          klon.querySelector(".pris").textContent = person.pris + " kr.";
+          klon.querySelector(".personer").style.border = "2px solid whote";
+          klon.querySelector(".personer").style.margin = "10px";
+          klon.querySelector(".personer").style.padding = "10px";
+          klon.querySelector(".personer").style.BorderRadius = "25px";
+          klon
+            .querySelector("article")
+            .addEventListener("click", () => visDetaljer(person));
+          beholder.appendChild(klon);
+        }
+      });
+    }
+
+    function visDetaljer(detaljer) {
+      console.log(detaljer);
+      const popup = document.querySelector("#popup");
+      popup.style.display = "block";
+      popup.querySelector(".pic").src =
+        "medium/" + detaljer.billednavn + "-md.jpg";
+      popup.querySelector(".navn").textContent = detaljer.navn;
+      popup.querySelector(".langbeskrivelse").textContent =
+        detaljer.langbeskrivelse;
+      popup.querySelector(".region").textContent =
+        "Oprindelsesregion: " + detaljer.oprindelsesregion;
+      document
+        .querySelector("#popupknap")
+        .addEventListener("click", () => (popup.style.display = "none"));
+    }
+  </script>
+</html>
