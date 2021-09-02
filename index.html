@@ -105,14 +105,14 @@
         color: var(--black);
       }
 
-      .personer {
+      .vismenu {
         box-shadow: 0px 2px 8px 5px rgba(0, 0, 0, 0.43);
         background-color: var(--beige);
         color: var(--black);
         text-align: center;
       }
 
-      .personer:hover {
+      .vismenu:hover {
         background-color: var(--orange);
         color: var(--black);
       }
@@ -176,6 +176,7 @@
 
   <header>
     <img src="logo.png" alt="Babushka logo" />
+
     <nav>
       <button data-kategori="alle" class="valgt">Alle</button>
       <button data-kategori="forretter">Forretter</button>
@@ -198,7 +199,7 @@
     <section class="madret_container"></section>
 
     <template>
-      <article class="personer">
+      <article class="vismenu">
         <img src="" alt="" />
         <h2></h2>
         <p class="navn"></p>
@@ -237,56 +238,56 @@
     };
 
     window.addEventListener("DOMContentLoaded", start);
-    let personer;
+    let retter;
     let filter = "alle";
     console.log("siden er loaded");
 
     function start() {
       const filterKnapper = document.querySelectorAll("nav button");
       filterKnapper.forEach((knap) =>
-        knap.addEventListener("click", filtrerPersoner)
+        knap.addEventListener("click", filtrerRetter)
       );
       hentData();
     }
 
     async function hentData() {
       const resultat = await fetch(url, options);
-      personer = await resultat.json();
-      console.log("Personer", personer);
-      visPersoner();
+      retter = await resultat.json();
+      console.log("retter", retter);
+      visRetter();
     }
 
-    function filtrerPersoner() {
+    function filtrerRetter() {
       const header = document.querySelector("#first h2");
       filter = this.dataset.kategori;
       document.querySelector(".valgt").classList.remove("valgt");
       this.classList.add("valgt");
-      visPersoner();
+      visRetter();
       header.textContent = this.textContent;
     }
 
-    function visPersoner() {
+    function visRetter() {
       const beholder = document.querySelector(".madret_container");
       const skabelon = document.querySelector("template");
       beholder.textContent = "";
 
-      personer.forEach((person) => {
-        console.log("kategori", person.kategori);
+      retter.forEach((ret) => {
+        console.log("kategori", ret.kategori);
 
-        if (filter == person.kategori || filter == "alle") {
+        if (filter == ret.kategori || filter == "alle") {
           const klon = skabelon.cloneNode(true).content;
-          klon.querySelector("h2").textContent = person.navn;
+          klon.querySelector("h2").textContent = ret.navn;
           klon.querySelector("img").src =
-            "medium/" + person.billednavn + "-md.jpg";
-          klon.querySelector(".info").textContent = person.kortbeskrivelse;
-          klon.querySelector(".pris").textContent = person.pris + " kr.";
-          klon.querySelector(".personer").style.border = "2px solid whote";
-          klon.querySelector(".personer").style.margin = "10px";
-          klon.querySelector(".personer").style.padding = "10px";
-          klon.querySelector(".personer").style.BorderRadius = "25px";
+            "medium/" + ret.billednavn + "-md.jpg";
+          klon.querySelector(".info").textContent = ret.kortbeskrivelse;
+          klon.querySelector(".pris").textContent = ret.pris + " kr.";
+          klon.querySelector(".vismenu").style.border = "2px solid whote";
+          klon.querySelector(".vismenu").style.margin = "10px";
+          klon.querySelector(".vismenu").style.padding = "10px";
+          klon.querySelector(".vismenu").style.BorderRadius = "25px";
           klon
             .querySelector("article")
-            .addEventListener("click", () => visDetaljer(person));
+            .addEventListener("click", () => visDetaljer(ret));
           beholder.appendChild(klon);
         }
       });
